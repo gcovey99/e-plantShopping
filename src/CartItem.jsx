@@ -9,8 +9,22 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
+      return cartItems.reduce((total, item) => total + item.quantity * item.cost, 0);
  
   };
+  return (
+    <div>
+      <h2>Shopping Cart</h2>
+      <ul>
+        {cartItems.map((item) => (
+          <li key={item.name}>
+            {item.name} - {item.quantity} x ${item.cost} = ${item.quantity * item.cost}
+          </li>
+        ))}
+      </ul>
+      <h3>Total Cost: ${calculateTotalAmount().toFixed(2)}</h3>
+    </div>
+  );
 
   const handleContinueShopping = (e) => {
    
